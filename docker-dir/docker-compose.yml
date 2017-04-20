@@ -7,4 +7,4 @@ services:
     links:
      - db
   db:
-    image: mysql:lat
+    image: mysql:latest
