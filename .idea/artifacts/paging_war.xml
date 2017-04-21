@@ -1,16 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="paging:war">
-    <output-path>$PROJECT_DIR$/src/main/webapp</output-path>
-    <root id="root">
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes">
-          <element id="module-output" name="paging" />
-        </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/paging/META-INF/MANIFEST.MF" />
-      </element>
-      <element id="javaee-facet-resources" facet="paging/web/Web" />
+  <artifact type="war" name="paging:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="paging.war">
+      <element id="artifact" artifact-name="paging:war exploded" />
     </root>
   </artifact>
 </component>
