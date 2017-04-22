@@ -57,6 +57,10 @@ public class JdbcConnectionUtil {
         }
     }
 
+    /**
+     * 获取数据库的连接
+     * @return
+     */
     public static Connection getConnection(){
         Connection connection;
         try {
@@ -65,6 +69,18 @@ public class JdbcConnectionUtil {
             throw new RuntimeException("获取数据库连接失败");
         }
         return connection;
+    }
+
+    /**
+     * 关闭数据库连接
+     * @param connection
+     */
+    public static void closeConnection(Connection connection){
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("数据库连接关闭失败");
+        }
     }
 
     public static String getDRIVER() {

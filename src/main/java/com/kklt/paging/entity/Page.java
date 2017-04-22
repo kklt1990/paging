@@ -18,7 +18,7 @@ public class Page<T> implements Serializable {
     /**
      * totalSize 一共有多少条数据
      */
-    private Integer  totalRecordSize;
+    private Integer totalRecordSize;
     /**
      * totalPageSize 一共有多少页
      */
@@ -36,6 +36,7 @@ public class Page<T> implements Serializable {
 
     /**
      * 所有参数的构造方法
+     *
      * @param pageSize
      * @param currentPageNumber
      * @param totalRecordSize
