@@ -51,6 +51,40 @@ public class Page<T> implements Serializable {
         this.currentPageRecord = currentPageRecord;
     }
 
+    /**
+     * 根据查询出来的学生信息列表和，一页的页码和要查询的页，初始化新的页面信息
+     * @param studentList
+     * @param pageSize
+     * @param pageNumber
+     */
+    public Page(List<T> studentList,Integer pageSize,Integer pageNumber){
+        if (studentList!=null&&!studentList.isEmpty()){
+            //记录总条数
+            int size = studentList.size();
+            totalRecordSize = size;
+            //所有记录一共可以分成几页
+            totalPageSize = (int)Math.ceil((double)size/(double)pageSize);
+            //要查询第几页的信息
+            if (pageNumber>totalPageSize){
+                currentPageNumber = totalPageSize;
+            }else {
+                currentPageNumber=pageNumber;
+            }
+            if (currentPageNumber<1){
+                currentPageNumber = 1;
+            }
+
+            //要查询页的开始位置
+            int startIndex = pageSize*(currentPageNumber-1);
+            //要查询的记录的结束的位置
+            int endIndex = pageSize*currentPageNumber>= totalRecordSize?totalRecordSize:(startIndex+pageSize);
+            List<T> studentList1 = studentList.subList(startIndex, endIndex);
+            setCurrentPageRecord(studentList1);
+            //当前页的记录条数
+            this.pageSize = endIndex-startIndex;
+        }
+    }
+
     public Integer getPageSize() {
         return pageSize;
     }
@@ -89,5 +123,16 @@ public class Page<T> implements Serializable {
 
     public void setCurrentPageRecord(List<T> currentPageRecord) {
         this.currentPageRecord = currentPageRecord;
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "pageSize=" + pageSize +
+                ", currentPageNumber=" + currentPageNumber +
+                ", totalRecordSize=" + totalRecordSize +
+                ", totalPageSize=" + totalPageSize +
+                ", currentPageRecord=" + currentPageRecord +
+                '}';
     }
 }

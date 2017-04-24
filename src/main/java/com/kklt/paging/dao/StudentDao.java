@@ -9,18 +9,12 @@ import java.util.List;
  * Created by root on 17-4-21.
  */
 public interface StudentDao {
-    /**
-     * 根据id查找学生
-     * @return
-     */
-    public Student findById(Integer id);
 
     /**
-     * 查找所有的学生
+     * 根据输入的学生的信息查询出匹配的学生的列表
+     * @param student
      * @return
      */
-    public List<Student> findAll();
-
-    public Page<Student> findAPage(Student student,Integer pageNumber,Integer pageSize);
+    public List<Student> findByStudent(Student student);
 
 }

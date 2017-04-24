@@ -13,11 +13,9 @@ public class StudentDaoImplTest {
     @Test
     public void findAPage() throws Exception {
         Student student = new Student();
-
-
-   student.setName("小");
+        student.setName("小");
         student.setSex(1);
-        new StudentDaoImpl().findAPage(student,0,0);
+        new StudentDaoImpl().findByStudent(student);
     }
 
 }
